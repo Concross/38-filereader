@@ -5,6 +5,7 @@ import modelFinder from '../middleware/modelFinder';
 import Team from '../models/team';
 import User from '../auth/user';
 import Profile from '../models/profile';
+import auth from '../auth/middleware';
 const router = express.Router();
 
 router.param('model', modelFinder);
@@ -32,7 +33,7 @@ router.post('/team', (req, res, next) => {
 
 });
 
-router.post('/api/v1/add/player', (req, res, next) => {
+router.post('/api/v1/add/player', auth, (req, res, next) => {
   let document = new Profile(req.body);
 
   document.save()
