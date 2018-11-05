@@ -24,7 +24,7 @@ export default class AuthForm extends React.Component {
     this.props.onComplete(this.state)
       .then(() => {
         if (localStorage.token) {
-          this.props.redirect('/players');
+          this.props.redirect('/settings');
         } else {
           this.props.redirect('/welcome/signup');
         }
